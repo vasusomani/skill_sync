@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: RouteGenerator.generateRoute,
       theme: ThemeData(
         scaffoldBackgroundColor: CustomColors.backgroundColor,
+        primaryColor: CustomColors.primaryColor,
         appBarTheme: AppBarTheme(
           backgroundColor: CustomColors.backgroundColor,
           elevation: 0,
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
           centerTitle: true,
-          iconTheme: const IconThemeData(color: Colors.black),
+          iconTheme: IconThemeData(color: CustomColors.primaryColor),
         ),
         fontFamily: GoogleFonts.poppins().fontFamily,
         textTheme: TextTheme(
@@ -52,6 +53,11 @@ class MyApp extends StatelessWidget {
             color: CustomColors.secondaryColor2,
             fontSize: 40,
             fontWeight: FontWeight.w600,
+          ),
+          bodySmall: const TextStyle(
+            color: Colors.white,
+            fontSize: 15,
+            fontWeight: FontWeight.w400,
           ),
           labelMedium: TextStyle(
             color: CustomColors.secondaryColor2,
