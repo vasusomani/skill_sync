@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "643422226866",
+    "project_id": "skill-sync-92163",
+    "storage_bucket": "skill-sync-92163.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643422226866:android:17e0f1cbf2beb3382b7cab",
+        "android_client_info": {
+          "package_name": "com.example.skill_sync"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCenXdVTyE7qiWEofJaU2JOOBG_mTzO-7I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
