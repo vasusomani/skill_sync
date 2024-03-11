@@ -10,11 +10,14 @@ class CustomDropDown extends StatelessWidget {
       required this.items,
       this.enableSearch = false,
       required this.controller,
-      this.setState});
+      this.hintText = "Select an item",
+      this.setState,
+      this.label});
   final List<String> items;
+  final String? label;
+  final String hintText;
   final TextEditingController controller;
   final bool enableSearch;
-  //pass setState
   final VoidCallback? setState;
 
   @override
@@ -33,11 +36,18 @@ class CustomDropDown extends StatelessWidget {
             .bodySmall
             ?.copyWith(color: Colors.white),
         dropdownSearchDecoration: InputDecoration(
-          hintText: "Select occupation",
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 23, vertical: 20),
+          hintText: hintText,
           hintStyle: Theme.of(context)
               .textTheme
               .bodySmall
               ?.copyWith(color: Colors.white),
+          labelText: label,
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          labelStyle: TextStyle(
+            color: Colors.white,
+          ),
           suffixIconColor: Colors.white,
           enabledBorder: CustomBorders().enabled,
           focusedBorder: CustomBorders().focused,
@@ -65,6 +75,9 @@ class CustomDropDown extends StatelessWidget {
         searchFieldProps: TextFieldProps(
           style: const TextStyle(color: Colors.white),
           decoration: InputDecoration(
+            errorStyle: const TextStyle(color: Colors.white),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             hintText: "Search here",
             hintStyle: const TextStyle(color: Colors.white),
             suffixIcon: const Icon(Icons.search, color: Colors.white),
@@ -77,12 +90,12 @@ class CustomDropDown extends StatelessWidget {
         showSearchBox: true,
         searchDelay: const Duration(milliseconds: 1),
         constraints: BoxConstraints(
-          maxHeight: MediaQuery.of(context).size.height * 0.8,
+          maxHeight: MediaQuery.of(context).size.height * 0.7,
           minHeight: MediaQuery.of(context).size.height * 0.3,
         ),
-        modalBottomSheetProps: ModalBottomSheetProps(
+        modalBottomSheetProps: const ModalBottomSheetProps(
           backgroundColor: CustomColors.backgroundColor,
-          shape: const RoundedRectangleBorder(
+          shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(15), topRight: Radius.circular(15)),
           ),

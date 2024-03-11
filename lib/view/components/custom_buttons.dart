@@ -17,22 +17,26 @@ class PrimaryButton extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         height: 70,
+        width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(30)),
           boxShadow: [
             BoxShadow(
               color: CustomColors.secondaryColor2,
-              offset: const Offset(5, 5),
+              offset: const Offset(3, 5),
               blurRadius: 0,
             )
           ],
           color: CustomColors.primaryColor,
         ),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-        child: Center(
-          child: Text(
-            title,
-            style: Theme.of(context).textTheme.labelMedium,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Center(
+            child: Text(
+              title,
+              style: Theme.of(context).textTheme.labelMedium,
+            ),
           ),
         ),
       ),
@@ -45,8 +49,10 @@ class SecondaryButton extends StatelessWidget {
       {super.key,
       required this.title,
       required this.onPressed,
+      this.style,
       this.isLoading = false});
   final String title;
+  final TextStyle? style;
   final VoidCallback onPressed;
   final bool isLoading;
 
@@ -68,6 +74,7 @@ class SecondaryButton extends StatelessWidget {
         child: FittedBox(
           child: Text(
             title,
+            style: style,
           ),
         ),
       ),

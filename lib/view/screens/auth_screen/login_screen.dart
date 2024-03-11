@@ -51,10 +51,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     // onPressed: () => Navigator.pushNamed(context, '/signup'),
                     onPressed: () => Navigator.push(
                       context,
-                      CustomRoute(page: SignupScreen()),
+                      CustomRoute(
+                          page: const SignupScreen(), animationType: "slide"),
                     ),
                     style: TextButton.styleFrom(
-                      padding: EdgeInsets.only(left: 5),
+                      padding: const EdgeInsets.only(left: 5),
                     ),
                     child: Text(
                       "Sign Up",
@@ -67,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Form(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -82,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         hintText: "Enter password",
                         isObscure: true,
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
@@ -101,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       PrimaryButton(
                         onPressed: () => Navigator.pushNamed(context, '/home'),
                         title: "Login",
@@ -118,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Expanded(
                     child: Container(
                       margin: const EdgeInsets.only(left: 10.0, right: 15.0),
-                      child: Divider(
+                      child: const Divider(
                         color: CustomColors.secondaryColor1,
                         height: 36,
                         indent: 15,
@@ -134,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Expanded(
                     child: Container(
                       margin: const EdgeInsets.only(left: 15.0, right: 10.0),
-                      child: Divider(
+                      child: const Divider(
                         color: CustomColors.secondaryColor1,
                         height: 36,
                         endIndent: 15,

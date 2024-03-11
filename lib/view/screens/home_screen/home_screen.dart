@@ -5,6 +5,12 @@ import 'package:skill_sync/constants/colors.dart';
 import 'package:skill_sync/models/project_model.dart';
 import 'package:skill_sync/models/user_model.dart';
 import 'package:skill_sync/view/components/containers/project_container.dart';
+import 'package:skill_sync/view/components/custom_drawer.dart';
+import 'package:skill_sync/view/screens/projects_screen/add_project_screen.dart';
+import 'package:skill_sync/view/screens/projects_screen/project_filter_bottom_sheet.dart';
+
+import '../../routes/route_animations.dart';
+import '../auth_screen/signup_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -58,6 +64,8 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Stack(
         children: [
           ListView.builder(
+            padding:
+                const EdgeInsets.only(bottom: kBottomNavigationBarHeight + 20),
             itemBuilder: (context, index) {
               return Padding(
                 padding:
@@ -125,7 +133,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 45,
                         color: CustomColors.primaryColor,
                       ),
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(
+                        context,
+                        CustomRoute(
+                            page: const AddProjectScreen(),
+                            animationType: "slideUp"),
+                      ),
                     ),
                     const SizedBox(width: 20),
                     IconButton(
@@ -134,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         size: 35,
                         color: CustomColors.primaryColor,
                       ),
-                      onPressed: () {},
+                      onPressed: () => projectFilterBottomSheet(context),
                     ),
                   ],
                 )),
@@ -142,166 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       drawer: SafeArea(
-        child: Drawer(
-          backgroundColor: CustomColors.backgroundColor,
-          shape: const RoundedRectangleBorder(
-            side: BorderSide(
-              color: CustomColors.primaryColor,
-            ),
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(30),
-              bottomRight: Radius.circular(30),
-            ),
-          ),
-          child: ListView(
-            children: [
-              SizedBox(height: 10),
-              Center(
-                child: Container(
-                  height: 120,
-                  width: 120,
-                  margin: const EdgeInsets.symmetric(vertical: 10),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: CustomColors.primaryColor,
-                      width: 2,
-                    ),
-                  ),
-                  child: FittedBox(
-                    child: Text(
-                      user.name![0],
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: CustomColors.primaryColor,
-                          ),
-                    ),
-                  ),
-                ),
-              ),
-              Center(
-                child: Text(
-                  user.name!,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: CustomColors.secondaryColor1,
-                      ),
-                ),
-              ),
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      user.level!,
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: CustomColors.secondaryColor1,
-                          ),
-                    ),
-                    SizedBox(width: 5),
-                    Text("|",
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: CustomColors.secondaryColor1,
-                              fontWeight: FontWeight.bold,
-                            )),
-                    SizedBox(width: 5),
-                    Text(
-                      user.projects?.length.toString() ?? "5" + " Projects",
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: CustomColors.secondaryColor1,
-                          ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 15),
-              Divider(
-                color: CustomColors.secondaryColor1,
-                indent: 15,
-                endIndent: 15,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              ListTile(
-                leading: SvgPicture.asset(
-                  'assets/icons/profile.svg',
-                  height: 30,
-                  color: CustomColors.primaryColor,
-                ),
-                title: Text(
-                  'My Profile',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: CustomColors.primaryColor,
-                      ),
-                ),
-                onTap: () {},
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              ListTile(
-                leading: SvgPicture.asset(
-                  'assets/icons/request.svg',
-                  height: 30,
-                  color: CustomColors.primaryColor,
-                ),
-                title: Text(
-                  'My Requests',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: CustomColors.primaryColor,
-                      ),
-                ),
-                onTap: () {},
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              ListTile(
-                leading: Icon(CupertinoIcons.briefcase_fill,
-                    size: 30, color: CustomColors.primaryColor),
-                title: Text(
-                  'My Projects',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: CustomColors.primaryColor,
-                      ),
-                ),
-                onTap: () {},
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              ListTile(
-                leading: Icon(Icons.leaderboard_outlined,
-                    size: 30, color: CustomColors.primaryColor),
-                title: Text(
-                  'Leaderboard',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: CustomColors.primaryColor,
-                      ),
-                ),
-                onTap: () {},
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              ListTile(
-                leading: SvgPicture.asset(
-                  'assets/icons/logout.svg',
-                  height: 30,
-                  color: Colors.red,
-                ),
-                title: Text(
-                  'Logout',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Colors.red,
-                      ),
-                ),
-                onTap: () {},
-              ),
-            ],
-          ),
-        ),
+        child: CustomDrawer(user: user),
       ),
     );
   }

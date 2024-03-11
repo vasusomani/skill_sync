@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skill_sync/view/routes/routing.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -10,7 +11,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -25,6 +26,41 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: CustomColors.backgroundColor,
         primaryColor: CustomColors.primaryColor,
+        datePickerTheme: DatePickerThemeData(
+          backgroundColor: CustomColors.backgroundColor,
+          headerHeadlineStyle: const TextStyle(
+            color: CustomColors.primaryColor,
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+          ),
+          dayStyle: const TextStyle(
+            fontSize: 15,
+            color: CustomColors.secondaryColor1,
+            fontWeight: FontWeight.w600,
+          ),
+          todayBorder: BorderSide(
+            color: CustomColors.primaryColor,
+            width: 2,
+          ),
+          confirmButtonStyle: TextButton.styleFrom(
+            primary: CustomColors.primaryColor,
+            backgroundColor: CustomColors.backgroundColor,
+          ),
+          cancelButtonStyle: TextButton.styleFrom(
+            primary: CustomColors.secondaryColor1,
+          ),
+          headerForegroundColor: CustomColors.primaryColor,
+          dividerColor: CustomColors.primaryColor,
+          todayForegroundColor:
+              MaterialStateProperty.all(CustomColors.primaryColor),
+          dayForegroundColor:
+              MaterialStateProperty.all(CustomColors.secondaryColor1),
+          weekdayStyle: const TextStyle(
+            fontSize: 15,
+            color: CustomColors.secondaryColor1,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         appBarTheme: AppBarTheme(
           backgroundColor: CustomColors.backgroundColor,
           elevation: 0,

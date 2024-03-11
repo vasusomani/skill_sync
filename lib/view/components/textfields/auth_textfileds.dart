@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:skill_sync/constants/borders.dart';
-import 'package:skill_sync/constants/colors.dart';
 
 class AuthTextField extends StatelessWidget {
   const AuthTextField({
@@ -10,10 +9,12 @@ class AuthTextField extends StatelessWidget {
     this.keyboardType,
     this.isObscure = false,
     this.maxLength = 50,
+    this.maxLines = 1,
     this.validator,
     this.onEyeTap,
   });
   final TextEditingController controller;
+  final int maxLines;
   final String hintText;
   final bool isObscure;
   final TextInputType? keyboardType;
@@ -37,6 +38,7 @@ class AuthTextField extends StatelessWidget {
       obscureText: isObscure,
       style: const TextStyle(color: Colors.white),
       maxLength: maxLength,
+      maxLines: maxLines,
       cursorColor: Colors.white,
       decoration: InputDecoration(
         hintText: hintText,

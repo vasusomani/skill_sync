@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:skill_sync/constants/colors.dart';
 import 'package:skill_sync/models/project_model.dart';
+import 'package:skill_sync/services/state_management_services/user_provider.dart';
 import 'package:skill_sync/view/components/custom_buttons.dart';
+import 'package:skill_sync/view/screens/projects_screen/request_project_bottom_sheet.dart';
 
-class ProjectContainer extends StatefulWidget {
+import '../../../models/user_model.dart';
+
+class ProjectContainer extends ConsumerStatefulWidget {
   const ProjectContainer({super.key, required this.project});
   final ProjectModel project;
 
   @override
-  State<ProjectContainer> createState() => _ProjectContainerState();
+  ConsumerState<ProjectContainer> createState() => _ProjectContainerState();
 }
 
-class _ProjectContainerState extends State<ProjectContainer> {
+class _ProjectContainerState extends ConsumerState<ProjectContainer> {
   bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
+    UserModel? user = ref.read(userProvider);
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -154,7 +160,11 @@ class _ProjectContainerState extends State<ProjectContainer> {
                   ),
                   Center(
                       child: SecondaryButton(
-                          title: "Collaborate", onPressed: () {})),
+                          title: "Collaborate",
+                          onPressed: () => requestProjectModelSheet(
+                              context: context,
+                              projectModel: widget.project,
+                              user: user!))),
                   const SizedBox(height: 10),
                 ],
               ),
