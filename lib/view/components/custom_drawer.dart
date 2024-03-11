@@ -104,7 +104,7 @@ class CustomDrawer extends StatelessWidget {
                     color: CustomColors.primaryColor,
                   ),
             ),
-            onTap: () {},
+            onTap: () => Navigator.pushNamed(context, '/profile'),
           ),
           const SizedBox(
             height: 5,
@@ -155,25 +155,36 @@ class CustomDrawer extends StatelessWidget {
                     color: CustomColors.primaryColor,
                   ),
             ),
-            onTap: () {},
+            onTap: () => Navigator.pushNamed(context, '/leaderboard'),
           ),
           const SizedBox(
             height: 5,
           ),
+          //support and help
           ListTile(
-            leading: SvgPicture.asset(
-              'assets/icons/logout.svg',
-              height: 30,
-              color: Colors.red,
-            ),
+            leading: Icon(Icons.help_outline, color: CustomColors.primaryColor),
             title: Text(
-              'Logout',
+              'Help & Support',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.red,
+                    color: CustomColors.primaryColor,
                   ),
             ),
-            onTap: () {},
+            onTap: () => Navigator.pushNamed(context, '/support'),
           ),
+          ListTile(
+              leading: SvgPicture.asset(
+                'assets/icons/logout.svg',
+                height: 30,
+                color: Colors.red,
+              ),
+              title: Text(
+                'Logout',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Colors.red,
+                    ),
+              ),
+              onTap: () => Navigator.pushNamedAndRemoveUntil(
+                  context, '/login', (route) => false)),
         ],
       ),
     );

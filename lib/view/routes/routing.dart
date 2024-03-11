@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:skill_sync/view/screens/chat_screen/chat_screen.dart';
+import 'package:skill_sync/view/screens/leaderboard_screen/leaderboard_screen.dart';
 import 'package:skill_sync/view/screens/on_boarding_screen/welcome_screen.dart';
+import 'package:skill_sync/view/screens/profile_screen/profile_screen.dart';
 
 import '../screens/auth_screen/login_screen.dart';
 import '../screens/auth_screen/signup_screen.dart';
@@ -28,6 +30,10 @@ class RouteGenerator extends NavigatorObserver {
         return MaterialPageRoute(builder: (_) => const RecentChatScreen());
       case '/chat':
         return MaterialPageRoute(builder: (_) => const ChatScreen());
+      case '/profile':
+        return MaterialPageRoute(builder: (_) => const ProfilePage());
+      case '/leaderboard':
+        return MaterialPageRoute(builder: (_) => const LeaderboardScreen());
       default:
         return _errorRoute();
     }

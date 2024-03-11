@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:skill_sync/view/components/textfields/custom_dropdown.dart';
 import 'package:skill_sync/view/components/textfields/auth_textfileds.dart';
 import 'package:skill_sync/view/components/custom_buttons.dart';
 
 import '../../../constants/colors.dart';
+import '../../../services/firebase_services/auth_service.dart';
 
-class SignupScreen extends StatefulWidget {
+class SignupScreen extends ConsumerStatefulWidget {
   const SignupScreen({super.key});
 
   @override
   _SignupScreenState createState() => _SignupScreenState();
 }
 
-class _SignupScreenState extends State<SignupScreen> {
+class _SignupScreenState extends ConsumerState<SignupScreen> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
@@ -120,9 +123,16 @@ class _SignupScreenState extends State<SignupScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SvgPicture.asset(
-                          "assets/icons/google-logo.svg",
-                          height: 65,
+                        GestureDetector(
+                          onTap: () async {
+                            await AuthService()
+                                .signInWithGoogle(context: context, ref: ref);
+                            Navigator.pushNamed(context, '/home');
+                          },
+                          child: SvgPicture.asset(
+                            "assets/icons/google-logo.svg",
+                            height: 65,
+                          ),
                         ),
                         const SizedBox(width: 40),
                         SvgPicture.asset(

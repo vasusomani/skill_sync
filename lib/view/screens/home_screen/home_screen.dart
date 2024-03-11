@@ -53,10 +53,13 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: SvgPicture.asset(
-              'assets/icons/profile.svg',
-              height: 27,
-              color: CustomColors.primaryColor,
+            child: GestureDetector(
+              onTap: () => Navigator.pushNamed(context, '/profile'),
+              child: SvgPicture.asset(
+                'assets/icons/profile.svg',
+                height: 27,
+                color: CustomColors.primaryColor,
+              ),
             ),
           ),
         ],

@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:skill_sync/constants/colors.dart';
+import 'package:skill_sync/services/firebase_services/auth_service.dart';
 import 'package:skill_sync/view/components/textfields/auth_textfileds.dart';
 import 'package:skill_sync/view/routes/route_animations.dart';
 import 'package:skill_sync/view/screens/auth_screen/signup_screen.dart';
 
 import '../../components/custom_buttons.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -148,9 +152,16 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SvgPicture.asset(
-                    "assets/icons/google-logo.svg",
-                    height: 65,
+                  GestureDetector(
+                    onTap: () async {
+                      await AuthService()
+                          .signInWithGoogle(context: context, ref: ref);
+                      Navigator.pushNamed(context, '/home');
+                    },
+                    child: SvgPicture.asset(
+                      "assets/icons/google-logo.svg",
+                      height: 65,
+                    ),
                   ),
                   const SizedBox(width: 40),
                   SvgPicture.asset(
