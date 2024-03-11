@@ -31,6 +31,13 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
   // int? _value = 1;
   int? selected=0;
   String? _occupation = "";
+  var items=[
+    "Student",
+    "Professor",
+    "Business",
+    "Job",
+    "Freelancer"
+  ];
   Widget customRadio(String text, int index){
     return TextButton(
         onPressed: (){
@@ -129,7 +136,7 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
               )
           ),
 
-          MyTextBox(text: "Hello World", sectionName: ("  Name"), img: " ",onPressed: ()=>editField('Name') , ),
+          MyTextBox(text: "Hello World", sectionName: ("  Name"),onPressed: ()=>editField('Name') , ),
           Padding(
               padding: const EdgeInsets.only(left:20.0),
 
@@ -209,38 +216,78 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              MyTextBox(text: "20", sectionName: "Age",img: " ", onPressed: ()=>editField('Age')),
-              DropdownMenu(
-                enableSearch: false,
-                label: const Text("Occupation"),
-                onSelected: (occupation){
-                  setState(() {
-                    _occupation=_occupation;
+              MyTextBox(text: "20", sectionName: "Age", onPressed: ()=>editField('Age')),
+              // DropdownMenu(
+              //   enableSearch: false,
+              //   label: const Text("Occupation"),
+              //   onSelected: (occupation){
+              //     setState(() {
+              //       _occupation=_occupation;
+              //
+              //     });
+              //   },
+              //     dropdownMenuEntries: <DropdownMenuEntry>[
+              //   DropdownMenuEntry(value: "Student", label: "Student"),
+              //   DropdownMenuEntry(value: "Professor", label:"Professor"),
+              //   DropdownMenuEntry(value: "Business", label: "Business"),
+              //   DropdownMenuEntry(value: "Job", label: "Job"),
+              //   DropdownMenuEntry(value: "Freelancer", label: "Freelancer"),
+              //
+              //
+              // ])
+              Transform.translate(offset: const Offset(-20,0), child: Container(
+                decoration: BoxDecoration(
+                  // color: Colors.grey[200],
+                  color: Colors.black,
+                  border: Border.all(color: Colors.white),
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                padding: const EdgeInsets.only(left: 15, top: 10, right: 15, bottom: 5),
+                margin: const EdgeInsets.all(15),
+                child: Stack(
+                        children: <Widget>[
+                Transform.translate(offset: const Offset(0, -16.5),child: Text("  Occupation".padRight(
+                  "Occupation".length + "  ".length,
+                  String.fromCharCodes([
+                    // no-brake space
+                    0x00A0,
+                    // space
+                    0x0020
+                  ])),style: TextStyle(color: Colors.white, backgroundColor: Colors.black,),),),
+                  DropdownButton(
+                    value: _occupation,
+                    // Down Arrow Icon
+                    icon: const Icon(Icons.keyboard_arrow_down),
+                    items: items.map((String items){
+                      return DropdownMenuItem(child: Text(items,style: TextStyle(color: Color(0xffffbc0e)),),value: items,);
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        _occupation = newValue!;
 
-                  });
-                },
-                  dropdownMenuEntries: <DropdownMenuEntry>[
-                DropdownMenuEntry(value: "Student", label: "Student"),
-                DropdownMenuEntry(value: "Professor", label:"Professor"),
-                DropdownMenuEntry(value: "Business", label: "Business"),
-                DropdownMenuEntry(value: "Job", label: "Job"),
-                DropdownMenuEntry(value: "Freelancer", label: "Freelancer"),
+                      });
+                    },
+                  ) ,
 
+                  ],
+                )
 
-              ])
+              ),
+              )
+
               
             ],
           ),
-          MyTextBox(text: "HTML, CSS, JS, NodeJS, Flutter, Dart, Java, C++,HTML, CSS, JS, NodeJS", sectionName: "  Skills",img: "rank1_gem.png", onPressed: ()=> editField("Skills")),
-          MyTextBox(text: "9876543210", sectionName: "  Mobile Number",img: "rank1_gem.png", onPressed: ()=>editField('Mobile Number'),),
-          MyTextBox(text: "abc_123@gmail.com", sectionName: "  Email ID",img: "rank1_gem.png", onPressed: ()=>editField('Email ID') ,),
+          MyTextBox(text: "HTML, CSS, JS, NodeJS, Flutter, Dart, Java, C++,HTML, CSS, JS, NodeJS", sectionName: "  Skills",onPressed: ()=> editField("Skills")),
+          MyTextBox(text: "9876543210", sectionName: "  Mobile Number", onPressed: ()=>editField('Mobile Number'),),
+          MyTextBox(text: "abc_123@gmail.com", sectionName: "  Email ID", onPressed: ()=>editField('Email ID') ,),
 
 
           const SizedBox(height: 10,),
           Text("Portfolio",style: TextStyle(color: Colors.white,fontSize: 20),),
-          MyTextBox(text: "Github", sectionName: "  Github",img: "rank1_gem.png", onPressed: ()=>editField("Github"),),
-          MyTextBox(text: "LinkedIn", sectionName: "  LinkedIn",img: "rank1_gem.png", onPressed: ()=>editField("LinkedIn"),),
-          MyTextBox(text: "Personal Website", sectionName: "  Personal Website",img: "rank1_gem.png", onPressed: ()=>editField("Website"),),
+          MyTextBox(text: "Github", sectionName: "  Github", onPressed: ()=>editField("Github"),),
+          MyTextBox(text: "LinkedIn", sectionName: "  LinkedIn", onPressed: ()=>editField("LinkedIn"),),
+          MyTextBox(text: "Personal Website", sectionName: "  Personal Website", onPressed: ()=>editField("Website"),),
 
 
 

@@ -49,9 +49,9 @@ class RankBoxWidget extends StatelessWidget {
               image: DecorationImage(image: AssetImage("assets/images/rank3_gem.png"))
             ),
           )):
-          Text(rank.toString(),style: TextStyle(color: Color(0xffffbc0e),fontSize: 24,fontWeight: FontWeight.bold),),
+          Text(rank.toString(),style: TextStyle(color: Color(0xffffbc0e),fontSize: 22,fontWeight: FontWeight.bold),),
 
-          Text(name,style: TextStyle(color: Color(0xffffbc0e),fontWeight: FontWeight.bold,fontSize: 20,),),
+          Text(name,style: TextStyle(color: Color(0xffffbc0e),fontWeight: FontWeight.bold,fontSize: 18,),),
 
          Text(n.toString()+" projcts completed",style: TextStyle(color: Colors.white,fontSize: 13))
         ],

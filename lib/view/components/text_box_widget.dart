@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 class MyTextBox extends StatelessWidget {
   final String text;
   final String sectionName;
-  final String img;
   final void Function()? onPressed;
   const MyTextBox({
     super.key,
     required this.text,
     required this.sectionName,
-    required this.img,
     required this.onPressed
   });
 
@@ -43,20 +41,10 @@ class MyTextBox extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children:[
-                  (img.compareTo(" ")!=0)?
-                  Container(
-                    height: 30,
-                    width: 30,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(image: AssetImage("assets/images/"+img))
-                    ),
-                  ):Text(" "),
-                  (sectionName.compareTo('Age')==0)?(SizedBox(width: 75,child: TextFormField(style: TextStyle(color: Color(0xffffbc0e)),),)):
+                  (sectionName.compareTo('Age')==0)?(SizedBox(width: 65,child: Text(text,style: TextStyle(color: Color(0xffffbc0e)),),)):
                   Expanded(
-                      child: TextFormField(
-                        decoration: const InputDecoration(
-                          hintText:'what people call you?',
-                        ),
+                      child: Text(
+                        text,
                         style: TextStyle(color: Color(0xffffbc0e)),
                       ),
                   ),
