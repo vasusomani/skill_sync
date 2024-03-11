@@ -3,6 +3,7 @@ import 'package:skill_sync/view/screens/on_boarding_screen/welcome_screen.dart';
 
 import '../screens/auth_screen/login_screen.dart';
 import '../screens/auth_screen/signup_screen.dart';
+import '../screens/home_screen/home_screen.dart';
 
 class RouteGenerator extends NavigatorObserver {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -13,6 +14,8 @@ class RouteGenerator extends NavigatorObserver {
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case '/signup':
         return MaterialPageRoute(builder: (_) => const SignupScreen());
+      case '/home':
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
       default:
         return _errorRoute();
     }

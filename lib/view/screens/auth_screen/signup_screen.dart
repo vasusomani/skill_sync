@@ -76,9 +76,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     const SizedBox(height: 50),
                     PrimaryButton(
-                      onPressed: () {
-                        // Handle form submission
-                      },
+                      onPressed: () => Navigator.pushNamed(context, '/home'),
                       title: "Sign Up",
                     ),
                     const SizedBox(height: 40),

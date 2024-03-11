@@ -1,6 +1,7 @@
 class ProjectModel {
   String? id;
   String? userId;
+  String? userName;
   String? title;
   String? description;
   String? domain;
@@ -12,6 +13,7 @@ class ProjectModel {
   ProjectModel({
     this.id,
     this.userId,
+    this.userName,
     this.title,
     this.description,
     this.domain,
@@ -24,6 +26,7 @@ class ProjectModel {
   ProjectModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     userId = json['userId'];
+    userName = json['userName'];
     title = json['title'];
     description = json['description'];
     domain = json['domain'];
@@ -37,6 +40,7 @@ class ProjectModel {
     return {
       'id': id,
       'userId': userId,
+      'userName': userName,
       'title': title,
       'description': description,
       'domain': domain,

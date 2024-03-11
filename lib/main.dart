@@ -35,10 +35,10 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
           centerTitle: true,
-          iconTheme: IconThemeData(color: CustomColors.primaryColor),
+          iconTheme: const IconThemeData(color: CustomColors.primaryColor),
         ),
         fontFamily: GoogleFonts.poppins().fontFamily,
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           displaySmall: TextStyle(
             color: CustomColors.primaryColor,
             fontSize: 15,
@@ -54,7 +54,17 @@ class MyApp extends StatelessWidget {
             fontSize: 40,
             fontWeight: FontWeight.w600,
           ),
-          bodySmall: const TextStyle(
+          bodyLarge: TextStyle(
+            color: CustomColors.tertiaryColor,
+            fontSize: 23,
+            fontWeight: FontWeight.w600,
+          ),
+          bodyMedium: TextStyle(
+            color: Colors.black,
+            fontSize: 18,
+            fontWeight: FontWeight.w400,
+          ),
+          bodySmall: TextStyle(
             color: Colors.white,
             fontSize: 15,
             fontWeight: FontWeight.w400,

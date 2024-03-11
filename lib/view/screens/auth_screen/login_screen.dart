@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:skill_sync/constants/colors.dart';
 import 'package:skill_sync/view/components/textfields/auth_textfileds.dart';
+import 'package:skill_sync/view/routes/route_animations.dart';
+import 'package:skill_sync/view/screens/auth_screen/signup_screen.dart';
 
 import '../../components/custom_buttons.dart';
 
@@ -46,7 +48,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   TextButton(
-                    onPressed: () => Navigator.pushNamed(context, '/signup'),
+                    // onPressed: () => Navigator.pushNamed(context, '/signup'),
+                    onPressed: () => Navigator.push(
+                      context,
+                      CustomRoute(page: SignupScreen()),
+                    ),
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.only(left: 5),
                     ),
