@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:skill_sync/constants/colors.dart';
 import 'package:skill_sync/models/project_model.dart';
 import 'package:skill_sync/services/state_management_services/user_provider.dart';
 import 'package:skill_sync/view/components/custom_buttons.dart';
-import 'package:skill_sync/view/screens/projects_screen/request_project_bottom_sheet.dart';
 
 import '../../../models/user_model.dart';
+import '../../screens/projects_screen/bottom_sheets/request_project_bottom_sheet.dart';
 
 class ProjectContainer extends ConsumerStatefulWidget {
-  const ProjectContainer({super.key, required this.project});
+  const ProjectContainer(
+      {super.key,
+      required this.project,
+      this.isOngoing = false,
+      this.isRequested = false,
+      this.isCollaborated = false});
   final ProjectModel project;
+  final bool isOngoing;
+  final bool isRequested;
+  final bool isCollaborated;
 
   @override
   ConsumerState<ProjectContainer> createState() => _ProjectContainerState();
@@ -158,13 +167,103 @@ class _ProjectContainerState extends ConsumerState<ProjectContainer> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Center(
-                      child: SecondaryButton(
-                          title: "Collaborate",
-                          onPressed: () => requestProjectModelSheet(
-                              context: context,
-                              projectModel: widget.project,
-                              user: user!))),
+                  if (widget.isOngoing)
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SecondaryButton(
+                              title: "Delete Project", onPressed: () {}),
+                          const SizedBox(width: 20),
+                          SecondaryButton(
+                              title: "Collaborated",
+                              onPressed: () => requestProjectModelSheet(
+                                  context: context,
+                                  projectModel: widget.project,
+                                  user: user!)),
+                        ],
+                      ),
+                    ),
+                  if (widget.isCollaborated)
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SecondaryButton(
+                              title: "Delete Project", onPressed: () {}),
+                          const SizedBox(width: 20),
+                          SecondaryButton(
+                              title: "Find Collaborator",
+                              onPressed: () => requestProjectModelSheet(
+                                  context: context,
+                                  projectModel: widget.project,
+                                  user: user!)),
+                        ],
+                      ),
+                    ),
+                  if (widget.isRequested && !widget.project.requestAccepted!)
+                    Center(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SecondaryButton(
+                                title: "Request Sent", onPressed: () {}),
+                          ],
+                        ),
+                      ),
+                    ),
+                  if (widget.isRequested && widget.project.requestAccepted!)
+                    Center(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 10),
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(18),
+                          border: Border.all(
+                            color: CustomColors.primaryColor,
+                          ),
+                        ),
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                'assets/icons/chat.svg',
+                                height: 20,
+                                color: CustomColors.primaryColor,
+                              ),
+                              SizedBox(width: 10),
+                              Text(
+                                "Chat Now",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall
+                                    ?.copyWith(
+                                      color: CustomColors.primaryColor,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  if (!widget.isOngoing &&
+                      !widget.isCollaborated &&
+                      !widget.isRequested)
+                    Center(
+                        child: SecondaryButton(
+                            title: "Collaborate",
+                            onPressed: () => requestProjectModelSheet(
+                                context: context,
+                                projectModel: widget.project,
+                                user: user!))),
                   const SizedBox(height: 10),
                 ],
               ),

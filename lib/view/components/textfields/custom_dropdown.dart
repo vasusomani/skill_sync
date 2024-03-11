@@ -1,8 +1,8 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 
-import '../../constants/borders.dart';
-import '../../constants/colors.dart';
+import '../../../constants/borders.dart';
+import '../../../constants/colors.dart';
 
 class CustomDropDown extends StatelessWidget {
   const CustomDropDown(

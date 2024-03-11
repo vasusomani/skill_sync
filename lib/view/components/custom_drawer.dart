@@ -110,6 +110,10 @@ class CustomDrawer extends StatelessWidget {
             height: 5,
           ),
           ListTile(
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/my_requests');
+            },
             leading: SvgPicture.asset(
               'assets/icons/request.svg',
               height: 30,
@@ -121,12 +125,15 @@ class CustomDrawer extends StatelessWidget {
                     color: CustomColors.primaryColor,
                   ),
             ),
-            onTap: () {},
           ),
           const SizedBox(
             height: 5,
           ),
           ListTile(
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/my_projects');
+            },
             leading: const Icon(CupertinoIcons.briefcase_fill,
                 size: 30, color: CustomColors.primaryColor),
             title: Text(
@@ -135,7 +142,6 @@ class CustomDrawer extends StatelessWidget {
                     color: CustomColors.primaryColor,
                   ),
             ),
-            onTap: () {},
           ),
           const SizedBox(
             height: 5,

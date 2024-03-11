@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:skill_sync/constants/colors.dart';
 import 'package:skill_sync/constants/data.dart';
-import 'package:skill_sync/view/components/custom_dropdown.dart';
+import 'package:skill_sync/view/components/textfields/custom_dropdown.dart';
 
-import '../../components/custom_buttons.dart';
+import '../../../components/custom_buttons.dart';
 
 void projectFilterBottomSheet(BuildContext context) {
   showModalBottomSheet(

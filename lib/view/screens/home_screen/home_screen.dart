@@ -7,7 +7,7 @@ import 'package:skill_sync/models/user_model.dart';
 import 'package:skill_sync/view/components/containers/project_container.dart';
 import 'package:skill_sync/view/components/custom_drawer.dart';
 import 'package:skill_sync/view/screens/projects_screen/add_project_screen.dart';
-import 'package:skill_sync/view/screens/projects_screen/project_filter_bottom_sheet.dart';
+import 'package:skill_sync/view/screens/projects_screen/bottom_sheets/project_filter_bottom_sheet.dart';
 
 import '../../routes/route_animations.dart';
 import '../auth_screen/signup_screen.dart';
@@ -124,7 +124,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 35,
                         color: CustomColors.primaryColor,
                       ),
-                      onPressed: () {},
+                      onPressed: () => Navigator.pushNamed(
+                        context,
+                        '/recent_chats',
+                      ),
                     ),
                     const SizedBox(width: 20),
                     IconButton(

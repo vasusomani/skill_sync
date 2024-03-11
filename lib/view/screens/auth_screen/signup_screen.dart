@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:skill_sync/view/components/custom_dropdown.dart';
+import 'package:skill_sync/view/components/textfields/custom_dropdown.dart';
 import 'package:skill_sync/view/components/textfields/auth_textfileds.dart';
 import 'package:skill_sync/view/components/custom_buttons.dart';
 
