@@ -30,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
 
   // int? _value = 1;
   int? selected=0;
-  String? _occupation = "";
+  String? _occupation = "Student";
   var items=[
     "Student",
     "Professor",
@@ -123,7 +123,7 @@ class _ProfilePageState extends State<ProfilePage> with SingleTickerProviderStat
           Text(
             "abc123",
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.grey[700],fontSize: 20),
+            style: TextStyle(color: Colors.grey[300],fontSize: 20),
           ),
 
           const SizedBox(height: 50,),
